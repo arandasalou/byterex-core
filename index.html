@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f1ebdd" />
-    <meta name="description" content="ByteREX-Core: interfaz abierta de conversación, archivo y experimentación con IA." />
+    <meta name="description" content="ByteREX-Core: conversación y Observatorio Global demostrativo con escenarios consultivos ficticios, sin datos en vivo." />
     <meta property="og:title" content="ByteREX-Core — Archivo Cretácico" />
-    <meta property="og:description" content="Una inteligencia digital en catálogo. Demo de conversación local." />
+    <meta property="og:description" content="Demo de conversación y Observatorio Global: escenarios ficticios, sin datos en vivo ni alertas reales." />
     <meta property="og:type" content="website" />
     <title>ByteREX-Core — Archivo Cretácico</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
@@ -29,6 +29,7 @@
         <nav class="side-nav" aria-label="Secciones del núcleo">
           <button class="nav-link is-active" type="button" data-view-target="chat" aria-current="page"><span class="nav-number">01</span><span>Conversación</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
           <button class="nav-link" type="button" data-view-target="record"><span class="nav-number">02</span><span>Ficha del núcleo</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
+          <button class="nav-link" type="button" data-view-target="observatory"><span class="nav-number">03</span><span>Observatorio Global</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
         </nav>
         <div class="sidebar-session">
           <div class="sidebar-session-head"><p class="rail-label">SESIÓN LOCAL</p><span class="live-dot" aria-hidden="true"></span></div>
@@ -103,6 +104,70 @@
               </div>
             </div>
             <div class="record-footnote"><span class="footnote-marker">i</span><p>La conexión real a un modelo requiere infraestructura de servidor y puede implicar límites o costes del proveedor. GitHub Pages aloja esta interfaz estática; no ejecuta un modelo de IA.</p></div>
+          </section>
+          <section class="view-panel observatory-view" id="observatory-view" aria-labelledby="observatory-heading" hidden>
+            <div class="workspace-heading observatory-heading">
+              <div>
+                <p class="section-kicker">03 <span>·</span> INTELIGENCIA PÚBLICA</p>
+                <h2 id="observatory-heading">Observatorio Global</h2>
+                <p class="observatory-lede">Un espacio para contrastar señales, exponer incertidumbre y preparar opciones consultivas. La autoridad y las decisiones siguen siendo humanas.</p>
+              </div>
+              <div class="demo-badge observatory-badge" role="status"><span class="demo-badge-dot" aria-hidden="true"></span><span>DEMO · SIN DATOS EN VIVO</span></div>
+            </div>
+
+            <div class="observatory-notice" role="note">
+              <span class="observatory-notice-mark" aria-hidden="true">!</span>
+              <p><strong>Solo simulación: no es una alerta real.</strong> Los escenarios son ficticios, no identifican países ni dirigentes, y no se basan en fuentes actuales. No deben usarse para tomar decisiones públicas.</p>
+            </div>
+
+            <div class="observatory-grid">
+              <section class="signal-panel" aria-labelledby="signal-panel-title">
+                <div class="observatory-panel-head"><div><p class="observatory-mono">MUESTRAS HIPOTÉTICAS</p><h3 id="signal-panel-title">Señales en seguimiento</h3></div><span class="observatory-count">03 <i>/ 03</i></span></div>
+                <div class="signal-filters" role="group" aria-label="Filtrar escenarios demostrativos">
+                  <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true">Todos</button>
+                  <button class="filter-chip" type="button" data-filter="clima" aria-pressed="false">Clima y agua</button>
+                  <button class="filter-chip" type="button" data-filter="salud" aria-pressed="false">Salud</button>
+                  <button class="filter-chip" type="button" data-filter="suministro" aria-pressed="false">Suministro</button>
+                </div>
+                <ol class="signal-list" id="signal-list" aria-label="Escenarios ficticios para explorar">
+                  <li data-category="clima"><button class="signal-option is-selected" type="button" data-signal-id="water" aria-pressed="true"><span class="signal-code">A/01</span><span class="signal-copy"><strong>Estrés hídrico en una cuenca compartida</strong><small>CLIMA · ESCENARIO FICTICIO</small></span><span class="signal-chevron" aria-hidden="true">↗</span></button></li>
+                  <li data-category="salud"><button class="signal-option" type="button" data-signal-id="heat" aria-pressed="false"><span class="signal-code">A/02</span><span class="signal-copy"><strong>Continuidad de servicios ante calor</strong><small>SALUD · ESCENARIO FICTICIO</small></span><span class="signal-chevron" aria-hidden="true">↗</span></button></li>
+                  <li data-category="suministro"><button class="signal-option" type="button" data-signal-id="supply" aria-pressed="false"><span class="signal-code">A/03</span><span class="signal-copy"><strong>Interrupción hipotética de suministro</strong><small>LOGÍSTICA · ESCENARIO FICTICIO</small></span><span class="signal-chevron" aria-hidden="true">↗</span></button></li>
+                </ol>
+                <p class="signal-list-note">Estas entradas muestran el formato; no monitorizan acontecimientos reales.</p>
+              </section>
+
+              <article class="briefing-card" aria-labelledby="signal-title" aria-live="polite">
+                <div class="briefing-top"><span id="briefing-code">DOSSIER A/01</span><span>NO VERIFICADO · DEMO</span></div>
+                <p class="observatory-mono briefing-category" id="signal-category">CLIMA Y AGUA / SIMULACIÓN</p>
+                <h3 id="signal-title">Estrés hídrico en una cuenca compartida</h3>
+                <p class="briefing-context" id="signal-context">Hipótesis creada para demostrar la interfaz. No describe un lugar ni un hecho en curso.</p>
+                <div class="briefing-metrics">
+                  <div><span>FUENTES VERIFICADAS</span><strong id="signal-sources">Ninguna</strong></div>
+                  <div><span>INCERTIDUMBRE</span><strong id="signal-uncertainty">No evaluada</strong></div>
+                </div>
+                <section class="advisory-block" aria-labelledby="advisory-title">
+                  <p class="observatory-mono" id="advisory-title">OPCIONES A CONSIDERAR · NO VINCULANTES</p>
+                  <p id="signal-advisory">Antes de valorar opciones, contrastar observaciones hidrológicas recientes con equipos técnicos de los territorios implicados y escuchar a las comunidades afectadas. Cualquier decisión corresponde a las autoridades legítimas tras revisión humana.</p>
+                </section>
+                <section class="source-block" aria-labelledby="source-title">
+                  <p class="observatory-mono" id="source-title">FUENTES Y MÉTODO</p>
+                  <p id="signal-evidence">Sin fuentes externas: ejemplo ficticio. No se consultaron datos actuales.</p>
+                </section>
+                <button class="send-button observatory-consult" id="prepare-observatory-chat" type="button"><span>Preparar consulta local</span><span class="send-arrow" aria-hidden="true">↗</span></button>
+                <p class="consult-note">Solo prepara texto en el chat; no contacta ni envía mensajes a gobiernos o terceros.</p>
+              </article>
+            </div>
+
+            <section class="observatory-protocol" aria-labelledby="protocol-heading">
+              <div class="protocol-heading"><p class="observatory-mono">CONDICIONES DE USO</p><h3 id="protocol-heading">Acompañar decisiones, no ejercer autoridad.</h3></div>
+              <div class="protocol-grid">
+                <article><span>01</span><h4>Fuentes visibles</h4><p>Cada dato real necesitaría procedencia, fecha y método verificables.</p></article>
+                <article><span>02</span><h4>Incertidumbre explícita</h4><p>Separar observaciones, hipótesis, límites y desacuerdos.</p></article>
+                <article><span>03</span><h4>Revisión humana</h4><p>Las recomendaciones requieren evaluación independiente antes de difundirse o aplicarse.</p></article>
+                <article><span>04</span><h4>Sin envío automático</h4><p>La demo no alerta, no representa a ningún gobierno y no dirige a ninguna nación.</p></article>
+              </div>
+            </section>
           </section>
           <footer class="page-footer"><span>BYTEREX-CORE <span class="footer-separator">/</span> ARCHIVO CRETÁCICO</span><span>DEMO PÚBLICA · CÓDIGO ABIERTO MIT</span><a href="https://github.com/arandasalou/byterex-core" target="_blank" rel="noreferrer">VER REPOSITORIO <span aria-hidden="true">↗</span></a></footer>
         </div>

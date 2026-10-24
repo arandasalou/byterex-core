@@ -1,4 +1,5 @@
 import { isRemoteMode, requestReply } from "./assistant.js";
+import { initializeObservatory } from "./observatory.js";
 
 const STORAGE_KEY = "byterex-core-chat-v1";
 const MAX_MESSAGES = 80;
@@ -20,7 +21,18 @@ const quickPrompts = document.querySelector("#quick-prompts");
 const modeLabel = document.querySelector("#mode-label");
 const connectionLabel = document.querySelector("#connection-label");
 const composerNote = document.querySelector("#composer-note");
+const prepareConsultButton = document.querySelector("#prepare-observatory-chat");
 const navButtons = [...document.querySelectorAll("[data-view-target]")];
+const panels = {
+  chat: document.querySelector("#chat-view"),
+  record: document.querySelector("#record-view"),
+  observatory: document.querySelector("#observatory-view")
+};
+const viewLabels = {
+  chat: "SALA DE CONVERSACIÓN",
+  record: "FICHA DEL NÚCLEO",
+  observatory: "OBSERVATORIO GLOBAL"
+};
 let sending = false;
 let messages = loadMessages();
 
@@ -133,10 +145,9 @@ function resetChat() {
 }
 
 function setView(view) {
-  const chatActive = view === "chat";
-  document.querySelector("#chat-view").hidden = !chatActive;
-  document.querySelector("#record-view").hidden = chatActive;
-  document.querySelector("#breadcrumb-section").textContent = chatActive ? "SALA DE CONVERSACIÓN" : "FICHA DEL NÚCLEO";
+  if (!panels[view]) return;
+  Object.entries(panels).forEach(([key, panel]) => { panel.hidden = key !== view; });
+  document.querySelector("#breadcrumb-section").textContent = viewLabels[view];
   navButtons.forEach((button) => {
     const active = button.dataset.viewTarget === view;
     button.classList.toggle("is-active", active);
@@ -161,9 +172,18 @@ clearButton.addEventListener("click", () => {
   if (window.confirm("¿Borrar el historial de esta conversación guardado en este navegador?")) resetChat();
 });
 navButtons.forEach((button) => button.addEventListener("click", () => setView(button.dataset.viewTarget)));
+prepareConsultButton.addEventListener("click", () => {
+  const scenarioTitle = document.querySelector("#signal-title").textContent;
+  input.value = `Prepara una nota consultiva sobre el escenario hipotético «${scenarioTitle}». Distingue hechos, hipótesis, incertidumbre y fuentes que harían falta. No emitas órdenes ni envíes mensajes a terceros.`;
+  setView("chat");
+  input.dispatchEvent(new Event("input", { bubbles: true }));
+  status.textContent = "Consulta preparada en el campo local; no se ha enviado a nadie.";
+  input.focus();
+});
 
 const remote = isRemoteMode();
 modeLabel.textContent = remote ? "ENDPOINT SEGURO" : "DEMO LOCAL";
 connectionLabel.textContent = remote ? "ENDPOINT CONFIGURADO" : "MODO DEMO · LOCAL";
 if (remote) composerNote.innerHTML = '<span aria-hidden="true">⌁</span> El endpoint recibe mensajes; configura cualquier credencial solo en su servidor.';
+initializeObservatory();
 renderAll();
