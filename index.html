@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f1ebdd" />
+    <meta name="description" content="ByteREX-Core: interfaz abierta de conversación, archivo y experimentación con IA." />
+    <meta property="og:title" content="ByteREX-Core — Archivo Cretácico" />
+    <meta property="og:description" content="Una inteligencia digital en catálogo. Demo de conversación local." />
+    <meta property="og:type" content="website" />
+    <title>ByteREX-Core — Archivo Cretácico</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/config.js"></script>
+    <script type="module" src="./js/app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Panel ByteREX-Core">
+        <a class="brand-lockup" href="#inicio" aria-label="ByteREX-Core, inicio">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 44 44"><path d="M7 8h17l13 14-13 14H7l12-14L7 8Z" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M12 22h19m-10-8 8 8-8 8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="8" cy="8" r="2" fill="currentColor"/></svg></span>
+          <span class="brand-copy"><strong>ByteREX<span>-Core</span></strong><small>NÚCLEO DIGITAL · 001</small></span>
+        </a>
+        <div class="sidebar-divider"></div>
+        <p class="rail-label">ARCHIVO ACTIVO</p>
+        <nav class="side-nav" aria-label="Secciones del núcleo">
+          <button class="nav-link is-active" type="button" data-view-target="chat" aria-current="page"><span class="nav-number">01</span><span>Conversación</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
+          <button class="nav-link" type="button" data-view-target="record"><span class="nav-number">02</span><span>Ficha del núcleo</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
+        </nav>
+        <div class="sidebar-session">
+          <div class="sidebar-session-head"><p class="rail-label">SESIÓN LOCAL</p><span class="live-dot" aria-hidden="true"></span></div>
+          <div class="session-card"><span class="session-indicator" aria-hidden="true"></span><span><strong>Conversación actual</strong><small id="session-count">01 registro</small></span></div>
+          <button class="new-session" id="new-chat" type="button"><span aria-hidden="true">＋</span> Nueva conversación</button>
+        </div>
+        <div class="sidebar-bottom">
+          <div class="sidebar-coordinates"><span>COORD.</span><strong>45° 01′ 18″ N</strong></div>
+          <div class="local-stamp"><span class="stamp-square" aria-hidden="true"></span><span>DATOS EN ESTE DISPOSITIVO<br /><strong>NO SE ENVÍAN EN MODO DEMO</strong></span></div>
+        </div>
+      </aside>
+
+      <main class="main-content" id="inicio">
+        <header class="topbar">
+          <div class="breadcrumb"><span>BRX</span><span class="breadcrumb-slash">/</span><span id="breadcrumb-section">SALA DE CONVERSACIÓN</span></div>
+          <div class="topbar-state"><span class="state-dot" aria-hidden="true"></span><span id="connection-label">MODO DEMO · LOCAL</span></div>
+        </header>
+        <div class="content-wrap">
+          <section class="hero" aria-labelledby="page-title">
+            <div class="hero-copy">
+              <div class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> CUADERNO DE ESPECÍMENES <span class="eyebrow-number">N.º 001 — 2026</span></div>
+              <h1 id="page-title">ByteREX,<br /><em>organismo digital.</em></h1>
+              <p class="hero-description">Un núcleo conversacional en código abierto. La primera pieza del archivo responde en modo de demostración, directamente en tu navegador.</p>
+            </div>
+            <div class="hero-index" aria-label="Número de catálogo"><span class="hero-index-label">CATÁLOGO</span><span class="hero-index-number">BRX<span>—</span>01</span><span class="hero-index-rule"></span><span class="hero-index-status">IA EXTERNA<br />AÚN NO CONECTADA</span></div>
+          </section>
+
+          <section class="view-panel" id="chat-view" aria-labelledby="chat-heading">
+            <div class="workspace-heading"><div><p class="section-kicker">01 <span>·</span> TRANSMISIÓN</p><h2 id="chat-heading">Sala de conversación</h2></div><div class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span><span id="mode-label">DEMO LOCAL</span></div></div>
+            <div class="workspace-grid">
+              <section class="chat-card" aria-label="Chat de ByteREX-Core">
+                <div class="chat-card-header"><div class="channel-heading"><span class="channel-mark" aria-hidden="true">BRX</span><span><strong>CANAL 01</strong><small>PROTOCOLO DE TEXTO</small></span></div><button class="icon-button" id="clear-chat" type="button" aria-label="Borrar conversación local" title="Borrar conversación local"><span aria-hidden="true">⌫</span></button></div>
+                <ol class="message-list" id="message-list" aria-label="Historial de conversación" aria-live="polite" aria-relevant="additions text"></ol>
+                <div class="quick-prompts" id="quick-prompts" aria-label="Preguntas sugeridas"><span class="quick-prompts-label">INICIAR EXPLORACIÓN</span><button type="button" class="prompt-chip">¿Cuál es tu protocolo?</button><button type="button" class="prompt-chip">Activa el modo sombra</button><button type="button" class="prompt-chip">¿Cómo funcionas aquí?</button></div>
+                <form class="composer" id="chat-form">
+                  <label class="sr-only" for="message-input">Mensaje para ByteREX-Core</label>
+                  <textarea id="message-input" name="message" rows="1" maxlength="1200" placeholder="Escribe a ByteREX…" required></textarea>
+                  <button class="send-button" id="send-button" type="submit"><span>Enviar</span><span class="send-arrow" aria-hidden="true">↗</span></button>
+                  <p class="composer-note" id="composer-note"><span aria-hidden="true">⌁</span> DEMO LOCAL: los mensajes permanecen en este navegador.</p>
+                </form>
+                <div class="chat-status" id="chat-status" role="status" aria-live="polite">Listo para recibir una señal.</div>
+              </section>
+
+              <aside class="specimen-card" aria-labelledby="specimen-title">
+                <div class="specimen-card-top"><span>PLACA ANATÓMICA</span><span>FIG. 01</span></div>
+                <figure class="specimen-figure">
+                  <svg class="specimen-drawing" viewBox="0 0 360 245" role="img" aria-labelledby="specimen-title specimen-desc">
+                    <title id="specimen-title">Esquema fósil de ByteREX</title><desc id="specimen-desc">Ilustración lineal de un cráneo de tiranosaurio junto a marcas de medición.</desc>
+                    <g class="plate-grid" fill="none" stroke="currentColor" stroke-width=".7" opacity=".32"><path d="M20 38h320M20 205h320M40 20v205M320 20v205" stroke-dasharray="2 5"/><path d="M28 55h9m-9 15h5m-5 15h9m-9 15h5m-5 15h9m-9 15h5m-5 15h9m-9 15h5m-5 15h9M310 55h9m-9 15h5m-5 15h9m-9 15h5m-5 15h9m-9 15h5m-5 15h9m-9 15h5m-5 15h9"/></g>
+                    <g class="fossil-lines" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M54 137c8-21 25-35 43-47 16-11 37-23 62-27 26-4 49 2 66 14 12 9 21 21 31 28l35 11-9 14-39 9-24 23-36 2-24 16-43-3-26-14-25-2-11-9 8-15Z" stroke-width="3"/><path d="M58 141c21 4 43 8 67 7 21 0 40-2 59-8l29-11 24 5 23-10 24-7" stroke-width="2.2"/><path d="M91 95c15 3 28 9 42 18m-12-33c7 13 9 24 8 35m31-47c-5 17-5 31 0 45m25-43c-8 13-11 25-9 40m28-28c-9 11-14 21-16 34" stroke-width="1.4"/><path d="M125 148l-7 17m21-17-2 21m19-22 4 22m21-25 8 20m23-33 9 14M103 142c-2 11 2 18 9 20m71-82 10-13m-2 21 17-17m-5 25 20-14" stroke-width="2"/><path d="M268 95c10-13 20-18 32-20m-24 27c11-10 22-13 35-13m-26 22c11-5 22-7 34-4M67 121 52 113m19-7-9-13m16 5-1-15m216 88c6-3 11-4 17-4m-19 13c7-2 13-2 20 0m-22 8c6 0 12 1 17 4" stroke-width="1.5"/></g>
+                    <g class="specimen-callouts" fill="currentColor"><circle cx="155" cy="65" r="3"/><circle cx="282" cy="112" r="2.5"/><circle cx="119" cy="163" r="2.5"/></g>
+                    <g class="specimen-label-lines" fill="none" stroke="currentColor" stroke-width="1"><path d="M155 62V42h44m85 67 20-19h29m-214 77-30 18H49"/></g>
+                    <g class="specimen-scale" fill="none" stroke="currentColor" stroke-width="1"><path d="M88 220h178m-178-4v8m22-4v5m22-5v5m22-4v8m22-4v5m22-5v5m22-4v8m22-4v5m22-5v5"/></g>
+                  </svg>
+                  <figcaption><span>VISTA LATERAL / RECONSTRUCCIÓN DIGITAL</span><span>NO ESCALA</span></figcaption>
+                </figure>
+                <div class="specimen-data"><div><span>IDENTIDAD</span><strong>BYTE REX · NÚCLEO IA</strong></div><div><span>ESTADO</span><strong><i class="tiny-status-dot" aria-hidden="true"></i> DEMOSTRACIÓN LOCAL</strong></div><div><span>MEMORIA</span><strong>ALMACENAMIENTO DEL NAVEGADOR</strong></div></div>
+                <button class="text-link" type="button" data-view-target="record">Abrir ficha del núcleo <span aria-hidden="true">↗</span></button>
+              </aside>
+            </div>
+          </section>
+
+          <section class="view-panel record-view" id="record-view" aria-labelledby="record-heading" hidden>
+            <div class="workspace-heading"><div><p class="section-kicker">02 <span>·</span> TAXONOMÍA</p><h2 id="record-heading">Ficha del núcleo</h2></div><div class="record-number">ESPECIE DIGITAL / BRX-01</div></div>
+            <div class="record-layout">
+              <div class="record-lead"><span class="record-stamp">PERFIL<br />DE ENTIDAD</span><p class="record-quote">«Una inteligencia construida para conversar, observar y proponer.»</p><p class="record-caveat">Esta página describe la identidad prevista para ByteREX-Core. La versión actual es una demo estática: las respuestas son simuladas y no representan un modelo de IA conectado.</p></div>
+              <div class="record-principles">
+                <article class="principle"><span>01 / IDENTIDAD</span><h3>Un núcleo para ByteREX</h3><p>Una interfaz abierta que presenta a ByteREX-Core como una entidad digital conversacional.</p></article>
+                <article class="principle"><span>02 / MODO SOMBRA</span><h3>Discreción por diseño</h3><p>En demo, los mensajes se guardan localmente en este navegador y no se envían a ningún servicio.</p></article>
+                <article class="principle"><span>03 / AVANZAR</span><h3>Evolución controlada</h3><p>Las mejoras pueden proponerse sin alterar silenciosamente la personalidad ni la configuración del núcleo.</p></article>
+                <article class="principle"><span>04 / CEREBRO LIBRE</span><h3>Conector aún pendiente</h3><p>La arquitectura admite un endpoint seguro. La clave del proveedor debe permanecer exclusivamente en el servidor futuro.</p></article>
+              </div>
+            </div>
+            <div class="record-footnote"><span class="footnote-marker">i</span><p>La conexión real a un modelo requiere infraestructura de servidor y puede implicar límites o costes del proveedor. GitHub Pages aloja esta interfaz estática; no ejecuta un modelo de IA.</p></div>
+          </section>
+          <footer class="page-footer"><span>BYTEREX-CORE <span class="footer-separator">/</span> ARCHIVO CRETÁCICO</span><span>DEMO PÚBLICA · CÓDIGO ABIERTO MIT</span><a href="https://github.com/arandasalou/byterex-core" target="_blank" rel="noreferrer">VER REPOSITORIO <span aria-hidden="true">↗</span></a></footer>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
