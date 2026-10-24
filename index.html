@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/core-orb.css" />
     <script src="./js/config.js"></script>
     <script type="module" src="./js/app.js"></script>
   </head>
@@ -53,6 +54,23 @@
               <div class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> CUADERNO DE ESPECÍMENES <span class="eyebrow-number">N.º 001 — 2026</span></div>
               <h1 id="page-title">ByteREX,<br /><em>organismo digital.</em></h1>
               <p class="hero-description">Un núcleo conversacional en código abierto. La primera pieza del archivo responde en modo de demostración, directamente en tu navegador.</p>
+            </div>
+            <div class="core-orb-module" role="group" aria-label="Estado del núcleo ByteREX-Core">
+              <div class="core-orb" id="core-orb" data-state="idle" data-intensity="low" aria-hidden="true">
+                <svg viewBox="0 0 180 180" focusable="false">
+                  <defs><radialGradient id="core-glow"><stop offset="0" stop-color="#185adb" stop-opacity=".92" /><stop offset=".46" stop-color="#185adb" stop-opacity=".28" /><stop offset="1" stop-color="#185adb" stop-opacity="0" /></radialGradient></defs>
+                  <circle class="orb-grid" cx="90" cy="90" r="82" />
+                  <circle class="orb-track orb-track-outer" cx="90" cy="90" r="69" />
+                  <circle class="orb-track orb-track-inner" cx="90" cy="90" r="52" />
+                  <path class="orb-crosshair" d="M90 4v24m0 124v24M4 90h24m124 0h24M29 29l17 17m88 88 17 17m0-122-17 17m-88 88-17 17" />
+                  <circle class="orb-aura" cx="90" cy="90" r="43" />
+                  <path class="orb-waveform" d="M48 90h12l7-9 8 18 9-27 10 39 9-25 9 12 8-8h18" />
+                  <circle class="orb-nucleus" cx="90" cy="90" r="24" />
+                  <path class="orb-symbol" d="M81 79h13l8 11-8 11H81l8-11-8-11Z" />
+                  <circle class="orb-satellite" cx="145" cy="55" r="3" />
+                </svg>
+              </div>
+              <div class="core-orb-copy"><span class="core-orb-kicker">NÚCLEO / BRX-01</span><span class="core-orb-status" id="core-state-label" aria-live="polite">EN REPOSO</span><span class="core-orb-note">RESPUESTA DE TEXTO · SIN AUDIO</span></div>
             </div>
             <div class="hero-index" aria-label="Número de catálogo"><span class="hero-index-label">CATÁLOGO</span><span class="hero-index-number">BRX<span>—</span>01</span><span class="hero-index-rule"></span><span class="hero-index-status">IA EXTERNA<br />AÚN NO CONECTADA</span></div>
           </section>

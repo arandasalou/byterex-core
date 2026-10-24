@@ -14,6 +14,8 @@ En GitHub abre **Settings → Pages → Build and deployment**. Elige **Deploy f
 
 La sección presenta escenarios ficticios para mostrar el formato de análisis consultivo. No usa datos actuales ni fuentes en vivo, no atribuye hechos a países o dirigentes y no envía alertas ni mensajes a gobiernos. Las posibles líneas de trabajo son ilustrativas y no vinculantes; una evaluación real exigiría fuentes verificables, incertidumbre explícita y revisión humana.
 
+El orbe central acompaña los estados del chat —reposo, procesamiento y respuesta escrita—. Su movimiento refleja la duración e intensidad aproximadas del texto; la demo no genera ni reproduce audio y respeta la preferencia de movimiento reducido del dispositivo.
+
 ## Integración futura con Venice
 
 GitHub Pages solo sirve archivos estáticos. No debe llamarse a Venice directamente desde el navegador: la clave de Venice quedaría expuesta en el código recibido por los visitantes. La interfaz espera una URL pública de backend en `js/config.js`, en el campo `chatEndpoint`. Esa URL es pública y no debe contener credenciales. El backend debe aceptar `POST` con `{ "message": "…", "history": [...] }` y responder `{ "reply": "…" }`.

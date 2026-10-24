@@ -1,0 +1,81 @@
+/* Orbe central: estado visual del chat, sin reproducción de audio. */
+.core-orb-module {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 215px;
+}
+
+.core-orb {
+  --core-speed: 0.72s;
+  width: 118px;
+  height: 118px;
+  flex: none;
+  position: relative;
+  color: var(--blue);
+  filter: drop-shadow(0 8px 15px rgba(24, 90, 219, 0.12));
+}
+
+.core-orb svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.orb-grid, .orb-track, .orb-crosshair, .orb-waveform, .orb-symbol { fill: none; stroke: currentColor; vector-effect: non-scaling-stroke; }
+.orb-grid { stroke-width: 0.7; opacity: 0.14; }
+.orb-track { stroke-width: 1; opacity: 0.48; }
+.orb-track-outer { stroke-dasharray: 2 5; }
+.orb-track-inner { stroke-dasharray: 1 6; opacity: 0.26; }
+.orb-crosshair { stroke-width: 0.7; opacity: 0.22; }
+.orb-aura { fill: url(#core-glow); opacity: 0.34; transform-box: fill-box; transform-origin: center; }
+.orb-waveform { stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; opacity: 0.58; transform-box: view-box; transform-origin: 50% 50%; }
+.orb-nucleus { fill: var(--blue); opacity: 0.87; transform-box: fill-box; transform-origin: center; }
+.orb-symbol { stroke: var(--paper); stroke-width: 1.6; stroke-linejoin: round; }
+.orb-satellite { fill: var(--blue); opacity: 0.78; }
+
+.core-orb[data-intensity="medium"] { --core-speed: 0.55s; }
+.core-orb[data-intensity="high"] { --core-speed: 0.38s; }
+.core-orb[data-state="idle"] .orb-nucleus { animation: core-breathe 3.6s ease-in-out infinite; }
+.core-orb[data-state="idle"] .orb-aura { animation: core-aura 3.6s ease-in-out infinite; }
+.core-orb[data-state="thinking"] .orb-track-outer { animation: core-rotate 4s linear infinite; }
+.core-orb[data-state="thinking"] .orb-track-inner { animation: core-rotate 2.7s linear reverse infinite; }
+.core-orb[data-state="thinking"] .orb-nucleus { animation: core-breathe 0.9s ease-in-out infinite; }
+.core-orb[data-state="thinking"] .orb-aura { animation: core-aura 1.2s ease-in-out infinite; }
+.core-orb[data-state="speaking"] .orb-track-outer { animation: core-rotate 3s linear infinite; }
+.core-orb[data-state="speaking"] .orb-track-inner { animation: core-rotate 1.8s linear reverse infinite; }
+.core-orb[data-state="speaking"] .orb-waveform { opacity: 1; animation: core-wave var(--core-speed) ease-in-out infinite; }
+.core-orb[data-state="speaking"] .orb-nucleus { animation: core-breathe var(--core-speed) ease-in-out infinite; }
+.core-orb[data-state="speaking"] .orb-aura { opacity: 0.75; animation: core-aura var(--core-speed) ease-in-out infinite; }
+.core-orb[data-state="error"] .orb-track { stroke-dasharray: 1 5; opacity: 0.35; }
+
+.core-orb-copy { display: grid; gap: 4px; min-width: 75px; }
+.core-orb-kicker, .core-orb-status, .core-orb-note { font-family: var(--mono); letter-spacing: 0.05em; }
+.core-orb-kicker { font-size: 7px; color: var(--muted); }
+.core-orb-status { font-size: 9px; font-weight: 600; color: var(--blue); }
+.core-orb-note { max-width: 115px; font-size: 6px; line-height: 1.5; color: var(--muted); }
+
+@keyframes core-breathe {
+  0%, 100% { transform: scale(0.96); opacity: 0.72; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+@keyframes core-aura {
+  0%, 100% { transform: scale(0.9); opacity: 0.22; }
+  50% { transform: scale(1.18); opacity: 0.72; }
+}
+@keyframes core-rotate { to { transform: rotate(360deg); } }
+@keyframes core-wave {
+  0%, 100% { transform: scaleY(0.58); }
+  50% { transform: scaleY(1.26); }
+}
+
+@media (max-width: 640px) {
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) 82px; gap: 10px; align-items: start; }
+  .hero-copy { grid-column: 1 / -1; }
+  .core-orb-module { grid-column: 1; grid-row: 2; min-width: 0; gap: 7px; }
+  .core-orb { width: 72px; height: 72px; }
+  .core-orb-copy { min-width: 0; gap: 3px; }
+  .core-orb-kicker { font-size: 6px; }
+  .core-orb-status { font-size: 8px; }
+  .core-orb-note { font-size: 5px; }
+  .hero-index { grid-column: 2; grid-row: 2; width: 82px; min-width: 0; margin-top: 0; padding-left: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .core-orb *, .core-orb *::before, .core-orb *::after { animation: none !important; transition: none !important; }
+}

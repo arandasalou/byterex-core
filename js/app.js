@@ -21,6 +21,8 @@ const quickPrompts = document.querySelector("#quick-prompts");
 const modeLabel = document.querySelector("#mode-label");
 const connectionLabel = document.querySelector("#connection-label");
 const composerNote = document.querySelector("#composer-note");
+const coreOrb = document.querySelector("#core-orb");
+const coreStateLabel = document.querySelector("#core-state-label");
 const prepareConsultButton = document.querySelector("#prepare-observatory-chat");
 const navButtons = [...document.querySelectorAll("[data-view-target]")];
 const panels = {
@@ -106,12 +108,35 @@ function setBusy(value) {
   sendButton.querySelector("span:first-child").textContent = value ? "Enviando" : "Enviar";
 }
 
+let coreStateResetTimer;
+
+function setCoreState(state, activityLength = 0) {
+  window.clearTimeout(coreStateResetTimer);
+  if (!coreOrb || !coreStateLabel) return;
+  const labels = {
+    idle: "EN REPOSO",
+    thinking: "PROCESANDO",
+    speaking: "RESPONDIENDO",
+    error: "CONEXIÓN INTERRUMPIDA"
+  };
+  coreOrb.dataset.state = state;
+  coreOrb.dataset.intensity = activityLength > 260 ? "high" : activityLength > 120 ? "medium" : "low";
+  coreStateLabel.textContent = labels[state] || labels.idle;
+  if (state === "speaking") {
+    const duration = Math.min(5200, Math.max(1500, 900 + activityLength * 9));
+    coreStateResetTimer = window.setTimeout(() => setCoreState("idle"), duration);
+  } else if (state === "error") {
+    coreStateResetTimer = window.setTimeout(() => setCoreState("idle"), 2200);
+  }
+}
+
 async function sendMessage(raw) {
   const text = raw.trim();
   if (!text || sending) return;
   input.value = "";
   input.style.height = "auto";
   addMessage("user", text);
+  setCoreState("thinking");
   setBusy(true);
   status.textContent = isRemoteMode() ? "Contactando el endpoint configurado…" : "ByteREX está preparando una respuesta simulada…";
   const waiting = document.createElement("li");
@@ -123,11 +148,13 @@ async function sendMessage(raw) {
   try {
     const reply = await requestReply(text, messages);
     waiting.remove();
+    setCoreState("speaking", reply.length);
     addMessage("assistant", reply);
     status.textContent = isRemoteMode() ? "Respuesta recibida del endpoint configurado." : "Respuesta simulada localmente. No se ha contactado con ninguna IA.";
   } catch (error) {
     waiting.remove();
     const message = error instanceof Error ? error.message : "Error desconocido.";
+    setCoreState("error");
     addMessage("assistant", `No se pudo completar la respuesta: ${message}`);
     status.textContent = "La conexión del endpoint falló; no se ha revelado ni enviado ninguna clave desde el navegador.";
   } finally {
@@ -138,6 +165,7 @@ async function sendMessage(raw) {
 
 function resetChat() {
   messages = [{ ...welcome }];
+  setCoreState("idle");
   saveMessages();
   renderAll();
   status.textContent = "Nueva conversación local lista.";
