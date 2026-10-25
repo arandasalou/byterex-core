@@ -21,8 +21,11 @@ const quickPrompts = document.querySelector("#quick-prompts");
 const modeLabel = document.querySelector("#mode-label");
 const connectionLabel = document.querySelector("#connection-label");
 const composerNote = document.querySelector("#composer-note");
+const coreStage = document.querySelector("#core-stage");
 const coreOrb = document.querySelector("#core-orb");
 const coreStateLabel = document.querySelector("#core-state-label");
+const coreIntensityLabel = document.querySelector("#core-intensity-label");
+const coreOpenChatButtons = [...document.querySelectorAll(".core-open-chat")];
 const prepareConsultButton = document.querySelector("#prepare-observatory-chat");
 const navButtons = [...document.querySelectorAll("[data-view-target]")];
 const panels = {
@@ -119,8 +122,14 @@ function setCoreState(state, activityLength = 0) {
     speaking: "RESPONDIENDO",
     error: "CONEXIÓN INTERRUMPIDA"
   };
+  const intensity = activityLength > 260 ? "high" : activityLength > 120 ? "medium" : "low";
   coreOrb.dataset.state = state;
-  coreOrb.dataset.intensity = activityLength > 260 ? "high" : activityLength > 120 ? "medium" : "low";
+  coreOrb.dataset.intensity = intensity;
+  if (coreStage) {
+    coreStage.dataset.state = state;
+    coreStage.dataset.intensity = intensity;
+  }
+  if (coreIntensityLabel) coreIntensityLabel.textContent = { low: "BAJA", medium: "MEDIA", high: "ALTA" }[intensity];
   coreStateLabel.textContent = labels[state] || labels.idle;
   if (state === "speaking") {
     const duration = Math.min(5200, Math.max(1500, 900 + activityLength * 9));
@@ -200,6 +209,11 @@ clearButton.addEventListener("click", () => {
   if (window.confirm("¿Borrar el historial de esta conversación guardado en este navegador?")) resetChat();
 });
 navButtons.forEach((button) => button.addEventListener("click", () => setView(button.dataset.viewTarget)));
+coreOpenChatButtons.forEach((button) => button.addEventListener("click", () => {
+  setView("chat");
+  status.textContent = "Canal de texto abierto. Escribe un mensaje para activar el núcleo.";
+  if (!sending) input.focus();
+}));
 prepareConsultButton.addEventListener("click", () => {
   const scenarioTitle = document.querySelector("#signal-title").textContent;
   input.value = `Prepara una nota consultiva sobre el escenario hipotético «${scenarioTitle}». Distingue hechos, hipótesis, incertidumbre y fuentes que harían falta. No emitas órdenes ni envíes mensajes a terceros.`;

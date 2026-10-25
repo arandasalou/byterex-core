@@ -14,7 +14,7 @@ En GitHub abre **Settings → Pages → Build and deployment**. Elige **Deploy f
 
 La sección presenta escenarios ficticios para mostrar el formato de análisis consultivo. No usa datos actuales ni fuentes en vivo, no atribuye hechos a países o dirigentes y no envía alertas ni mensajes a gobiernos. Las posibles líneas de trabajo son ilustrativas y no vinculantes; una evaluación real exigiría fuentes verificables, incertidumbre explícita y revisión humana.
 
-El orbe central acompaña los estados del chat —reposo, procesamiento y respuesta escrita—. Su movimiento refleja la duración e intensidad aproximadas del texto; la demo no genera ni reproduce audio y respeta la preferencia de movimiento reducido del dispositivo.
+El orbe es el foco visual de la portada y abre la sala de conversación al activarlo. Sus capas y órbitas distinguen reposo, procesamiento y respuesta escrita; la intensidad acompaña la longitud de la respuesta. La demo no genera ni reproduce audio y respeta la preferencia de movimiento reducido del dispositivo.
 
 ## Integración futura con Venice
 
