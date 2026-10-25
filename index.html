@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f1ebdd" />
-    <meta name="description" content="ByteREX-Core: conversación y Observatorio Global demostrativo con escenarios consultivos ficticios, sin datos en vivo." />
+    <meta name="description" content="ByteREX-Core: archivo consultivo de noticias públicas GDELT y RSS, con procedencia visible y revisión humana." />
     <meta property="og:title" content="ByteREX-Core — Archivo Cretácico" />
-    <meta property="og:description" content="Demo de conversación y Observatorio Global: escenarios ficticios, sin datos en vivo ni alertas reales." />
+    <meta property="og:description" content="Observatorio de noticias públicas GDELT/RSS; conversación aún en modo demo, sin órdenes ni alertas automáticas." />
     <meta property="og:type" content="website" />
     <title>ByteREX-Core — Archivo Cretácico</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/core-orb.css" />
+    <link rel="stylesheet" href="./css/news-feed.css" />
     <script src="./js/config.js"></script>
     <script type="module" src="./js/app.js"></script>
   </head>
@@ -28,9 +29,9 @@
         <div class="sidebar-divider"></div>
         <p class="rail-label">ARCHIVO ACTIVO</p>
         <nav class="side-nav" aria-label="Secciones del núcleo">
-          <button class="nav-link is-active" type="button" data-view-target="chat" aria-current="page"><span class="nav-number">01</span><span>Conversación</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
-          <button class="nav-link" type="button" data-view-target="record"><span class="nav-number">02</span><span>Ficha del núcleo</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
-          <button class="nav-link" type="button" data-view-target="observatory"><span class="nav-number">03</span><span>Observatorio Global</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
+          <button class="nav-link is-active" type="button" data-view-target="observatory" aria-current="page"><span class="nav-number">01</span><span>Observatorio Global</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
+          <button class="nav-link" type="button" data-view-target="chat"><span class="nav-number">02</span><span>Conversación demo</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
+          <button class="nav-link" type="button" data-view-target="record"><span class="nav-number">03</span><span>Ficha del núcleo</span><span class="nav-arrow" aria-hidden="true">↗</span></button>
         </nav>
         <div class="sidebar-session">
           <div class="sidebar-session-head"><p class="rail-label">SESIÓN LOCAL</p><span class="live-dot" aria-hidden="true"></span></div>
@@ -39,21 +40,21 @@
         </div>
         <div class="sidebar-bottom">
           <div class="sidebar-coordinates"><span>COORD.</span><strong>45° 01′ 18″ N</strong></div>
-          <div class="local-stamp"><span class="stamp-square" aria-hidden="true"></span><span>DATOS EN ESTE DISPOSITIVO<br /><strong>NO SE ENVÍAN EN MODO DEMO</strong></span></div>
+          <div class="local-stamp"><span class="stamp-square" aria-hidden="true"></span><span>CHAT LOCAL · SIN IA<br /><strong>NOTICIAS · ARCHIVO PÚBLICO</strong></span></div>
         </div>
       </aside>
 
       <main class="main-content" id="inicio">
         <header class="topbar">
-          <div class="breadcrumb"><span>BRX</span><span class="breadcrumb-slash">/</span><span id="breadcrumb-section">SALA DE CONVERSACIÓN</span></div>
-          <div class="topbar-state"><span class="state-dot" aria-hidden="true"></span><span id="connection-label">MODO DEMO · LOCAL</span></div>
+          <div class="breadcrumb"><span>BRX</span><span class="breadcrumb-slash">/</span><span id="breadcrumb-section">OBSERVATORIO GLOBAL</span></div>
+          <div class="topbar-state"><span class="state-dot" aria-hidden="true"></span><span id="connection-label">FUENTES PÚBLICAS · GDELT / RSS</span></div>
         </header>
         <div class="content-wrap">
           <section class="hero" aria-labelledby="page-title">
             <div class="hero-copy">
               <div class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> CUADERNO DE ESPECÍMENES <span class="eyebrow-number">N.º 001 — 2026</span></div>
               <h1 id="page-title">ByteREX,<br /><em>organismo digital.</em></h1>
-              <p class="hero-description">Un núcleo conversacional en código abierto. La primera pieza del archivo responde en modo de demostración, directamente en tu navegador.</p>
+              <p class="hero-description">El Observatorio archiva noticias públicas con fuente y fecha. El chat continúa en demo local hasta conectar un modelo; el archivo no entrena ninguna IA.</p>
             </div>
             <div class="hero-index" aria-label="Número de catálogo"><span class="hero-index-label">CATÁLOGO</span><span class="hero-index-number">BRX<span>—</span>01</span><span class="hero-index-rule"></span><span class="hero-index-status">IA EXTERNA<br />AÚN NO CONECTADA</span></div>
           </section>
@@ -61,7 +62,7 @@
           <section class="core-stage" id="core-stage" data-state="idle" data-intensity="low" aria-labelledby="core-stage-heading">
             <div class="core-stage-head">
               <div><p class="core-stage-kicker">CENTRO OPERATIVO <span>·</span> BRX-001</p><h2 id="core-stage-heading">El núcleo.<br /><em>En el centro.</em></h2></div>
-              <div class="core-stage-mode"><span class="core-stage-live-dot" aria-hidden="true"></span>DEMO LOCAL <span>· TEXTO</span></div>
+              <div class="core-stage-mode"><span class="core-stage-live-dot" aria-hidden="true"></span>CHAT DEMO <span>· TEXTO</span></div>
             </div>
             <div class="core-stage-body">
               <div class="core-stage-rail core-stage-rail-left">
@@ -119,8 +120,8 @@
             <div class="core-stage-footer"><span>SEÑAL VISUAL REACTIVA</span><span>NO GENERA NI REPRODUCE AUDIO</span><span>BYTE REX CORE <b>—</b> 001</span></div>
           </section>
 
-          <section class="view-panel" id="chat-view" aria-labelledby="chat-heading">
-            <div class="workspace-heading"><div><p class="section-kicker">01 <span>·</span> TRANSMISIÓN</p><h2 id="chat-heading">Sala de conversación</h2></div><div class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span><span id="mode-label">DEMO LOCAL</span></div></div>
+          <section class="view-panel" id="chat-view" aria-labelledby="chat-heading" hidden>
+            <div class="workspace-heading"><div><p class="section-kicker">02 <span>·</span> TRANSMISIÓN</p><h2 id="chat-heading">Sala de conversación</h2></div><div class="demo-badge"><span class="demo-badge-dot" aria-hidden="true"></span><span id="mode-label">CHAT DEMO · SIN IA</span></div></div>
             <div class="workspace-grid">
               <section class="chat-card" aria-label="Chat de ByteREX-Core">
                 <div class="chat-card-header"><div class="channel-heading"><span class="channel-mark" aria-hidden="true">BRX</span><span><strong>CANAL 01</strong><small>PROTOCOLO DE TEXTO</small></span></div><button class="icon-button" id="clear-chat" type="button" aria-label="Borrar conversación local" title="Borrar conversación local"><span aria-hidden="true">⌫</span></button></div>
@@ -155,9 +156,9 @@
           </section>
 
           <section class="view-panel record-view" id="record-view" aria-labelledby="record-heading" hidden>
-            <div class="workspace-heading"><div><p class="section-kicker">02 <span>·</span> TAXONOMÍA</p><h2 id="record-heading">Ficha del núcleo</h2></div><div class="record-number">ESPECIE DIGITAL / BRX-01</div></div>
+            <div class="workspace-heading"><div><p class="section-kicker">03 <span>·</span> TAXONOMÍA</p><h2 id="record-heading">Ficha del núcleo</h2></div><div class="record-number">ESPECIE DIGITAL / BRX-01</div></div>
             <div class="record-layout">
-              <div class="record-lead"><span class="record-stamp">PERFIL<br />DE ENTIDAD</span><p class="record-quote">«Una inteligencia construida para conversar, observar y proponer.»</p><p class="record-caveat">Esta página describe la identidad prevista para ByteREX-Core. La versión actual es una demo estática: las respuestas son simuladas y no representan un modelo de IA conectado.</p></div>
+              <div class="record-lead"><span class="record-stamp">PERFIL<br />DE ENTIDAD</span><p class="record-quote">«Una inteligencia construida para conversar, observar y proponer.»</p><p class="record-caveat">El Observatorio consulta un archivo real de titulares y metadatos públicos. El chat aún es una demo local, no está conectado a un modelo; las noticias no se usan para entrenar ni modificar uno.</p></div>
               <div class="record-principles">
                 <article class="principle"><span>01 / IDENTIDAD</span><h3>Un núcleo para ByteREX</h3><p>Una interfaz abierta que presenta a ByteREX-Core como una entidad digital conversacional.</p></article>
                 <article class="principle"><span>02 / MODO SOMBRA</span><h3>Discreción por diseño</h3><p>En demo, los mensajes se guardan localmente en este navegador y no se envían a ningún servicio.</p></article>
@@ -167,71 +168,63 @@
             </div>
             <div class="record-footnote"><span class="footnote-marker">i</span><p>La conexión real a un modelo requiere infraestructura de servidor y puede implicar límites o costes del proveedor. GitHub Pages aloja esta interfaz estática; no ejecuta un modelo de IA.</p></div>
           </section>
-          <section class="view-panel observatory-view" id="observatory-view" aria-labelledby="observatory-heading" hidden>
+          <section class="view-panel observatory-view" id="observatory-view" aria-labelledby="observatory-heading">
             <div class="workspace-heading observatory-heading">
               <div>
-                <p class="section-kicker">03 <span>·</span> INTELIGENCIA PÚBLICA</p>
+                <p class="section-kicker">01 <span>·</span> ARCHIVO DE FUENTES</p>
                 <h2 id="observatory-heading">Observatorio Global</h2>
-                <p class="observatory-lede">Un espacio para contrastar señales, exponer incertidumbre y preparar opciones consultivas. La autoridad y las decisiones siguen siendo humanas.</p>
+                <p class="observatory-lede">Un archivo consultivo de noticias públicas con procedencia, fecha e idioma visibles. Actualización programada cada hora UTC; no es un servicio de alertas.</p>
               </div>
-              <div class="demo-badge observatory-badge" role="status"><span class="demo-badge-dot" aria-hidden="true"></span><span>DEMO · SIN DATOS EN VIVO</span></div>
+              <div class="news-heading-actions"><span class="news-source-mark">GDELT <i>+</i> RSS</span><button class="news-refresh-button" id="news-refresh-button" type="button"><span aria-hidden="true">↻</span> Actualizar archivo</button></div>
             </div>
 
-            <div class="observatory-notice" role="note">
-              <span class="observatory-notice-mark" aria-hidden="true">!</span>
-              <p><strong>Solo simulación: no es una alerta real.</strong> Los escenarios son ficticios, no identifican países ni dirigentes, y no se basan en fuentes actuales. No deben usarse para tomar decisiones públicas.</p>
+            <div class="news-caveat" role="note"><span class="news-caveat-mark" aria-hidden="true">i</span><p><strong>Archivo, no veredicto.</strong> Se guardan títulos, fechas, enlaces y extractos breves de feeds, no artículos completos. La clasificación temática es automática; el sistema no verifica hechos, predice crisis, emite órdenes ni contacta a terceros. Consulta siempre la fuente original.</p></div>
+
+            <div class="news-overview" role="status" aria-live="polite">
+              <div class="news-overview-state"><span class="news-state-indicator" id="news-state-indicator" aria-hidden="true"></span><span id="news-status-text">Conectando con el archivo…</span></div>
+              <div><span class="news-overview-label">ÚLTIMO BARRIDO</span><strong id="news-last-sweep">Sin registro</strong></div>
+              <div><span class="news-overview-label">NOTICIAS</span><strong id="news-result-count">—</strong></div>
             </div>
 
-            <div class="observatory-grid">
-              <section class="signal-panel" aria-labelledby="signal-panel-title">
-                <div class="observatory-panel-head"><div><p class="observatory-mono">MUESTRAS HIPOTÉTICAS</p><h3 id="signal-panel-title">Señales en seguimiento</h3></div><span class="observatory-count">03 <i>/ 03</i></span></div>
-                <div class="signal-filters" role="group" aria-label="Filtrar escenarios demostrativos">
-                  <button class="filter-chip is-active" type="button" data-filter="all" aria-pressed="true">Todos</button>
-                  <button class="filter-chip" type="button" data-filter="clima" aria-pressed="false">Clima y agua</button>
-                  <button class="filter-chip" type="button" data-filter="salud" aria-pressed="false">Salud</button>
-                  <button class="filter-chip" type="button" data-filter="suministro" aria-pressed="false">Suministro</button>
-                </div>
-                <ol class="signal-list" id="signal-list" aria-label="Escenarios ficticios para explorar">
-                  <li data-category="clima"><button class="signal-option is-selected" type="button" data-signal-id="water" aria-pressed="true"><span class="signal-code">A/01</span><span class="signal-copy"><strong>Estrés hídrico en una cuenca compartida</strong><small>CLIMA · ESCENARIO FICTICIO</small></span><span class="signal-chevron" aria-hidden="true">↗</span></button></li>
-                  <li data-category="salud"><button class="signal-option" type="button" data-signal-id="heat" aria-pressed="false"><span class="signal-code">A/02</span><span class="signal-copy"><strong>Continuidad de servicios ante calor</strong><small>SALUD · ESCENARIO FICTICIO</small></span><span class="signal-chevron" aria-hidden="true">↗</span></button></li>
-                  <li data-category="suministro"><button class="signal-option" type="button" data-signal-id="supply" aria-pressed="false"><span class="signal-code">A/03</span><span class="signal-copy"><strong>Interrupción hipotética de suministro</strong><small>LOGÍSTICA · ESCENARIO FICTICIO</small></span><span class="signal-chevron" aria-hidden="true">↗</span></button></li>
-                </ol>
-                <p class="signal-list-note">Estas entradas muestran el formato; no monitorizan acontecimientos reales.</p>
-              </section>
+            <section class="news-sources-panel" aria-labelledby="news-sources-heading">
+              <div class="news-section-heading"><div><p class="observatory-mono">SALUD DE CONECTORES</p><h3 id="news-sources-heading">Estado de las fuentes</h3></div><p>La respuesta de cada feed se indica por separado.</p></div>
+              <ul class="news-source-list" id="news-source-status" aria-live="polite" aria-label="Estado de GDELT y los feeds RSS"></ul>
+            </section>
 
-              <article class="briefing-card" aria-labelledby="signal-title" aria-live="polite">
-                <div class="briefing-top"><span id="briefing-code">DOSSIER A/01</span><span>NO VERIFICADO · DEMO</span></div>
-                <p class="observatory-mono briefing-category" id="signal-category">CLIMA Y AGUA / SIMULACIÓN</p>
-                <h3 id="signal-title">Estrés hídrico en una cuenca compartida</h3>
-                <p class="briefing-context" id="signal-context">Hipótesis creada para demostrar la interfaz. No describe un lugar ni un hecho en curso.</p>
-                <div class="briefing-metrics">
-                  <div><span>FUENTES VERIFICADAS</span><strong id="signal-sources">Ninguna</strong></div>
-                  <div><span>INCERTIDUMBRE</span><strong id="signal-uncertainty">No evaluada</strong></div>
-                </div>
-                <section class="advisory-block" aria-labelledby="advisory-title">
-                  <p class="observatory-mono" id="advisory-title">OPCIONES A CONSIDERAR · NO VINCULANTES</p>
-                  <p id="signal-advisory">Antes de valorar opciones, contrastar observaciones hidrológicas recientes con equipos técnicos de los territorios implicados y escuchar a las comunidades afectadas. Cualquier decisión corresponde a las autoridades legítimas tras revisión humana.</p>
-                </section>
-                <section class="source-block" aria-labelledby="source-title">
-                  <p class="observatory-mono" id="source-title">FUENTES Y MÉTODO</p>
-                  <p id="signal-evidence">Sin fuentes externas: ejemplo ficticio. No se consultaron datos actuales.</p>
-                </section>
-                <button class="send-button observatory-consult" id="prepare-observatory-chat" type="button"><span>Preparar consulta local</span><span class="send-arrow" aria-hidden="true">↗</span></button>
-                <p class="consult-note">Solo prepara texto en el chat; no contacta ni envía mensajes a gobiernos o terceros.</p>
-              </article>
+            <div class="news-filters">
+              <div class="news-filter-group" id="topic-filters" role="group" aria-label="Filtrar noticias por tema">
+                <span class="news-filter-label">TEMA</span>
+                <button type="button" data-news-topic="all" aria-pressed="true">Todos</button>
+                <button type="button" data-news-topic="climate_water" aria-pressed="false">Clima y agua</button>
+                <button type="button" data-news-topic="health" aria-pressed="false">Salud</button>
+                <button type="button" data-news-topic="food_security" aria-pressed="false">Seguridad alimentaria</button>
+              </div>
+              <div class="news-filter-group" id="language-filters" role="group" aria-label="Filtrar noticias por idioma">
+                <span class="news-filter-label">IDIOMA</span>
+                <button type="button" data-news-language="all" aria-pressed="true">Todos</button>
+                <button type="button" data-news-language="es" aria-pressed="false">ES</button>
+                <button type="button" data-news-language="en" aria-pressed="false">EN</button>
+              </div>
             </div>
+
+            <section class="news-feed-section" aria-labelledby="news-feed-heading">
+              <div class="news-section-heading news-feed-heading"><div><p class="observatory-mono">TITULARES TRAZABLES</p><h3 id="news-feed-heading">Archivo reciente</h3></div><p id="news-result-context">Esperando datos del servidor.</p></div>
+              <ol class="news-feed-list" id="news-list" aria-label="Noticias públicas archivadas"></ol>
+              <div class="news-empty-state" id="news-empty" hidden><span class="news-empty-mark" aria-hidden="true">—</span><h4 id="news-empty-title">Todavía no hay registros</h4><p id="news-empty-copy">No se muestran escenarios ficticios. El archivo solo presenta datos obtenidos del servidor.</p></div>
+              <div class="news-error-state" id="news-error" role="alert" hidden><strong>No se pudo leer el archivo.</strong><span id="news-error-copy">Revisa la conexión o vuelve a intentarlo. No se mostrarán datos inventados.</span></div>
+            </section>
 
             <section class="observatory-protocol" aria-labelledby="protocol-heading">
-              <div class="protocol-heading"><p class="observatory-mono">CONDICIONES DE USO</p><h3 id="protocol-heading">Acompañar decisiones, no ejercer autoridad.</h3></div>
+              <div class="protocol-heading"><p class="observatory-mono">LÍMITES DEL SISTEMA</p><h3 id="protocol-heading">Acompañar decisiones, no ejercer autoridad.</h3></div>
               <div class="protocol-grid">
-                <article><span>01</span><h4>Fuentes visibles</h4><p>Cada dato real necesitaría procedencia, fecha y método verificables.</p></article>
-                <article><span>02</span><h4>Incertidumbre explícita</h4><p>Separar observaciones, hipótesis, límites y desacuerdos.</p></article>
-                <article><span>03</span><h4>Revisión humana</h4><p>Las recomendaciones requieren evaluación independiente antes de difundirse o aplicarse.</p></article>
-                <article><span>04</span><h4>Sin envío automático</h4><p>La demo no alerta, no representa a ningún gobierno y no dirige a ninguna nación.</p></article>
+                <article><span>01</span><h4>Procedencia visible</h4><p>Cada registro conserva título, fecha, fuente y enlace original.</p></article>
+                <article><span>02</span><h4>Cobertura parcial</h4><p>GDELT y los feeds no representan todas las noticias ni todas las regiones.</p></article>
+                <article><span>03</span><h4>Sin entrenamiento</h4><p>Los metadatos se archivan para consulta; no modifican pesos de ningún modelo.</p></article>
+                <article><span>04</span><h4>Revisión humana</h4><p>No hay alertas oficiales, recomendaciones automáticas ni mensajes a gobiernos.</p></article>
               </div>
             </section>
           </section>
-          <footer class="page-footer"><span>BYTEREX-CORE <span class="footer-separator">/</span> ARCHIVO CRETÁCICO</span><span>DEMO PÚBLICA · CÓDIGO ABIERTO MIT</span><a href="https://github.com/arandasalou/byterex-core" target="_blank" rel="noreferrer">VER REPOSITORIO <span aria-hidden="true">↗</span></a></footer>
+          <footer class="page-footer"><span>BYTEREX-CORE <span class="footer-separator">/</span> ARCHIVO CRETÁCICO</span><span>OBSERVATORIO · GDELT / RSS</span><a href="https://github.com/arandasalou/byterex-core" target="_blank" rel="noreferrer">VER REPOSITORIO <span aria-hidden="true">↗</span></a></footer>
         </div>
       </main>
     </div>

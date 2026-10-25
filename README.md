@@ -1,31 +1,37 @@
 # ByteREX-Core
 
-Interfaz estática, pública y de código abierto para conversar con ByteREX-Core. El repositorio puede publicarse directamente desde su rama `main` en GitHub Pages. La demo no llama a un proveedor de IA y puede usarse sin una clave.
+Interfaz estática pública del **Observatorio Global ByteREX-Core**, con identidad visual de Archivo Cretácico. El orbe central es el acceso práctico a la conversación; GitHub Pages publica los archivos de este repositorio desde `main` y `/`.
 
-## Ejecutar localmente
+- **Sitio público:** https://arandasalou.github.io/byterex-core/
+- **API pública de noticias:** https://byterex-ilbi3cja.manus.space
+- **Estado de la API:** `/api/status`
+- **Archivo de noticias:** `/api/news`
 
-Desde la raíz del repositorio, ejecuta `python3 -m http.server 3000` y abre `http://localhost:3000`. El código publicado está en la raíz (`index.html`, `css/`, `js/`, `favicon.svg`). Las conversaciones demo se guardan en `localStorage` del navegador; no se sincronizan entre dispositivos ni se envían a un servidor.
-
-## Activar GitHub Pages
-
-En GitHub abre **Settings → Pages → Build and deployment**. Elige **Deploy from a branch**, selecciona `main` y la carpeta `/(root)`, y guarda. La publicación desde repositorios públicos está disponible en GitHub Free según la [guía oficial de GitHub Pages](https://docs.github.com/pages/quickstart). La activación de la opción Pages requiere acceso de propietario o administrador del repositorio.
+GitHub Pages ya está configurado para `main` y la raíz del repositorio. `js/config.js` contiene únicamente el origen público del API; no incluye claves ni credenciales.
 
 ## Observatorio Global
 
-La sección presenta escenarios ficticios para mostrar el formato de análisis consultivo. No usa datos actuales ni fuentes en vivo, no atribuye hechos a países o dirigentes y no envía alertas ni mensajes a gobiernos. Las posibles líneas de trabajo son ilustrativas y no vinculantes; una evaluación real exigiría fuentes verificables, incertidumbre explícita y revisión humana.
+El panel consulta noticias reales del API y muestra su fuente, idioma, fecha, tema, enlace original y el estado de las fuentes. La primera recolección guardó 76 elementos: 30 de WHO en inglés, 25 de WHO en español y 21 de FAO Newsroom. Esa ejecución fue parcial: UN News y GDELT devolvieron errores de red; una consulta preliminar de GDELT había recibido HTTP 429. El estado más reciente se obtiene de `/api/status`; los fallos no se sustituyen por escenarios inventados.
 
-El orbe es el foco visual de la portada y abre la sala de conversación al activarlo. Sus capas y órbitas distinguen reposo, procesamiento y respuesta escrita; la intensidad acompaña la longitud de la respuesta. La demo no genera ni reproduce audio y respeta la preferencia de movimiento reducido del dispositivo.
+El piloto usa GDELT y feeds RSS de WHO (inglés y español), FAO Newsroom y UN News. Hay una tarea de recolección configurada cada hora UTC. Solo se archivan metadatos, enlaces y extractos cortos del feed (hasta 500 caracteres), no artículos completos.
 
-## Integración futura con Venice
+**Límites:** no usa X/Twitter, no descarga artículos completos, no entrena ni ajusta modelos y no envía avisos o instrucciones a gobiernos. Es un observatorio consultivo: los registros requieren verificación humana y no son alertas oficiales, predicciones ni decisiones autónomas.
 
-GitHub Pages solo sirve archivos estáticos. No debe llamarse a Venice directamente desde el navegador: la clave de Venice quedaría expuesta en el código recibido por los visitantes. La interfaz espera una URL pública de backend en `js/config.js`, en el campo `chatEndpoint`. Esa URL es pública y no debe contener credenciales. El backend debe aceptar `POST` con `{ "message": "…", "history": [...] }` y responder `{ "reply": "…" }`.
+## Conversación y privacidad
 
-El servidor futuro deberá llamar a `POST https://api.venice.ai/api/v1/chat/completions`, enviar la autenticación Bearer con `VENICE_API_KEY` guardada en el gestor de secretos de ese servidor y devolver el texto generado en `reply`. No guardes la clave en Pages, ni siquiera como secreto de GitHub Actions: una clave inyectada en el código que sirve la página sería pública. El backend deberá controlar el acceso, establecer límites de gasto y protegerse contra abuso.
+La conversación sigue en modo de demostración local: no está conectada a Venice ni a otro modelo remoto y el historial demo se guarda en el navegador. No hay claves de proveedor en este repositorio. GitHub Pages sirve archivos públicos estáticos; una clave incorporada al frontend dejaría de ser secreta.
 
-**Costes:** la demo estática y el alojamiento Pages del repositorio público no consumen la API de Venice. La inferencia de Venice se factura por modelo y tokens. La documentación indica que las cuentas Free pueden llamar a la API, pero las solicitudes se cobran con las tarifas publicadas y Free no incluye la asignación mensual de créditos de algunos planes de pago. Por eso, usar Venice no garantiza inferencia real gratuita. Revisa las [tarifas oficiales](https://docs.venice.ai/overview/pricing) antes de activar un endpoint.
+Para ver el diseño localmente, ejecuta `python3 -m http.server 3000` desde la raíz y abre `http://localhost:3000`. Por seguridad, el API permite CORS al origen de GitHub Pages; la copia local podrá mostrar la interfaz, pero no consultar el API desde `localhost`.
 
-Más documentación: [Venice Chat Completions](https://docs.venice.ai/api-reference/endpoint/chat/completions), [guía de seguridad de claves](https://docs.venice.ai/guides/getting-started/generating-api-key).
+## Fuentes
+
+- [GDELT DOC API](https://blog.gdeltproject.org/gdelt-doc-2-0-api-debuts/)
+- [WHO RSS en inglés](https://www.who.int/rss-feeds/news-english.xml) y [en español](https://www.who.int/rss-feeds/news-spanish.xml)
+- [FAO Newsroom RSS](https://www.fao.org/feeds/fao-newsroom-rss)
+- [UN News Top Stories RSS](https://news.un.org/feed/subscribe/en/news/all/rss.xml)
+
+El sitio estático puede alojarse en GitHub Pages Free para un repositorio público; los límites o cuotas del backend dependen del plan de WebDev y no se promete uso ilimitado ni coste cero para los servicios de terceros.
 
 ## Licencia
 
-El código se publica bajo licencia MIT; consulta [`LICENSE`](./LICENSE).
+MIT. Consulta [`LICENSE`](./LICENSE).

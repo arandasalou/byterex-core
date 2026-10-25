@@ -1,4 +1,5 @@
-/* Only public browser-safe settings belong here. Never put provider tokens or API keys in this file. */
+/* Browser-safe public configuration only. Never put provider tokens or API keys here. */
 window.BYTEREX_CONFIG = Object.freeze({
-  chatEndpoint: ""
+  chatEndpoint: "",
+  newsApiBase: "https://byterex-ilbi3cja.manus.space"
 });

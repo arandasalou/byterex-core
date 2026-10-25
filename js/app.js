@@ -26,7 +26,6 @@ const coreOrb = document.querySelector("#core-orb");
 const coreStateLabel = document.querySelector("#core-state-label");
 const coreIntensityLabel = document.querySelector("#core-intensity-label");
 const coreOpenChatButtons = [...document.querySelectorAll(".core-open-chat")];
-const prepareConsultButton = document.querySelector("#prepare-observatory-chat");
 const navButtons = [...document.querySelectorAll("[data-view-target]")];
 const panels = {
   chat: document.querySelector("#chat-view"),
@@ -214,18 +213,10 @@ coreOpenChatButtons.forEach((button) => button.addEventListener("click", () => {
   status.textContent = "Canal de texto abierto. Escribe un mensaje para activar el núcleo.";
   if (!sending) input.focus();
 }));
-prepareConsultButton.addEventListener("click", () => {
-  const scenarioTitle = document.querySelector("#signal-title").textContent;
-  input.value = `Prepara una nota consultiva sobre el escenario hipotético «${scenarioTitle}». Distingue hechos, hipótesis, incertidumbre y fuentes que harían falta. No emitas órdenes ni envíes mensajes a terceros.`;
-  setView("chat");
-  input.dispatchEvent(new Event("input", { bubbles: true }));
-  status.textContent = "Consulta preparada en el campo local; no se ha enviado a nadie.";
-  input.focus();
-});
 
 const remote = isRemoteMode();
-modeLabel.textContent = remote ? "ENDPOINT SEGURO" : "DEMO LOCAL";
-connectionLabel.textContent = remote ? "ENDPOINT CONFIGURADO" : "MODO DEMO · LOCAL";
+modeLabel.textContent = remote ? "ENDPOINT SEGURO" : "CHAT DEMO · SIN IA";
+connectionLabel.textContent = remote ? "CHAT REMOTO · ENDPOINT CONFIGURADO" : "OBSERVATORIO PÚBLICO · CHAT DEMO";
 if (remote) composerNote.innerHTML = '<span aria-hidden="true">⌁</span> El endpoint recibe mensajes; configura cualquier credencial solo en su servidor.';
 initializeObservatory();
 renderAll();
